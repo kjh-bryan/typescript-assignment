@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "./Settings.css";
+import { SettingsContext } from "../../context/settings";
 
 const Settings = () => {
-    const [position, setPosition] = useState(1);
-    const handleOptionChange = (event: any) => {
-        console.log("event.target.value", event.target.value);
+    const settingsContext = useContext(SettingsContext);
+
+    if (!settingsContext) {
+        throw new Error("Settings must be used within a SettingsProvider");
+    }
+
+    const { count, setCount, position, setPosition, time, setTime } =
+        settingsContext;
+
+    const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPosition(+event.target.value);
     };
     return (
@@ -15,7 +23,11 @@ const Settings = () => {
                         <p>Notification count</p>
                     </div>
                     <div className="settings-dialog-input">
-                        <input type="number"></input>
+                        <input
+                            type="number"
+                            value={count}
+                            onChange={(event) => setCount(+event.target.value)}
+                        ></input>
                     </div>
                 </div>
 
@@ -71,7 +83,11 @@ const Settings = () => {
                         <p>Notification disappear time</p>
                     </div>
                     <div className="settings-dialog-input">
-                        <input type="number"></input>
+                        <input
+                            type="number"
+                            value={time}
+                            onChange={(event) => setTime(+event.target.value)}
+                        ></input>
                     </div>
                 </div>
             </div>

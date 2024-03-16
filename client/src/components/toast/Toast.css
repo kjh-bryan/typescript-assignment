@@ -1,0 +1,97 @@
+.toast-container {
+    position: absolute;
+    z-index: 1000;
+    padding: 20px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.position-1 {
+    top: 0;
+    left: 0;
+}
+
+.position-2 {
+    top: 0;
+    right: 0;
+}
+.position-3 {
+    bottom: 0;
+    left: 0;
+}
+
+.position-4 {
+    bottom: 0;
+    right: 0;
+}
+
+.content {
+    position: relative;
+    height: 100%;
+}
+
+.toast {
+    background-color: #2c313e;
+    padding: 16px;
+    min-width: 360px;
+    border-radius: 16px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toast-right {
+    animation-name: slideInRight;
+    animation-duration: 0.35s;
+}
+
+.toast-left {
+    animation-name: slideInLeft;
+    animation-duration: 0.35s;
+}
+
+.toast p.message {
+    flex-grow: 1;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    60% {
+        transform: translateX(15%);
+    }
+    80% {
+        transform: translateX(-5%);
+    }
+    80% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+    }
+    60% {
+        transform: translateX(-15%);
+    }
+    80% {
+        transform: translateX(5%);
+    }
+    80% {
+        transform: translateX(0);
+    }
+}
+
+.close-button {
+    background: none;
+    cursor: pointer;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    margin-left: auto; /* Add margin between message and button */
+}

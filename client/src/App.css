@@ -18,3 +18,7 @@ body {
     background-color: #030919;
     color: white;
 }
+
+.content-container {
+    position: relative;
+}

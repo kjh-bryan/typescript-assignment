@@ -3,15 +3,21 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Main from "./pages/main/Main";
 import Settings from "./pages/settings/Settings";
+import { ToastProvider } from "./components/toast/Toast";
+import { Content } from "./components/content/Content";
 
 const App = () => {
     return (
-        <div className="container">
+        <div className="container content-container ">
             <Navbar />
-            <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/settings" element={<Settings />} />
-            </Routes>
+            <ToastProvider>
+                <Content>
+                    <Routes>
+                        <Route path="/" element={<Main />} />
+                        <Route path="/settings" element={<Settings />} />
+                    </Routes>
+                </Content>
+            </ToastProvider>
         </div>
     );
 };
